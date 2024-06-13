@@ -1,0 +1,27 @@
+## Setting up a Development Environment
+To start building your voting dApp, we need to set up our development environment. Here's what you'll need:
+
+### Tools Required:
+- Node.js: JavaScript runtime environment.
+- npm: Node package manager.
+- Truffle: Ethereum development framework.
+- Ganache: Local blockchain for testing.
+- MetaMask: Ethereum wallet browser extension.
+#### Step-by-Step Setup:
+- Install Node.js and npm:
+
+Download and install Node.js from nodejs.org. This will also install npm.
+- Install Truffle:
+
+Open your terminal and run:
+```
+npm install -g truffle
+```
+- Install Ganache:
+
+Download and install Ganache from trufflesuite.com/ganache.
+- Install MetaMask:
+
+Add the MetaMask extension to your browser from metamask.io.
+
+
