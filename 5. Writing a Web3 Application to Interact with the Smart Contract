@@ -180,3 +180,4 @@ Open your browser and go to `http://localhost:8080`.
 - **Check Results**: The results will be updated in the `#results` div.
 
 By following these steps, you should have a fully functional voting dApp that interacts with your smart contract on the Sepolia testnet.
+[👉Next Lesson:Deploying the dApp to the Ethereum network](https://github.com/JaveriaTariq/A-beginner-s-tutorial-on-creating-a-simple-voting-dApp-using-Ethereum-and-Solidity/blob/main/6.%20Deploying%20the%20dApp%20to%20the%20Ethereum%20network)
