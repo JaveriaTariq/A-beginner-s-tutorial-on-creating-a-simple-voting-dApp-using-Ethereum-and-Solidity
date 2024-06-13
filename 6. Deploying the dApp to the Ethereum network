@@ -1,0 +1,75 @@
+Let's learn how to deploying the dApp to the Ethereum Network
+
+#### Step 1: Create an Infura Project
+1. Go to [Infura](https://infura.io/) and sign up for an account on the Infura website. Enter your details and select "CREATE A FREE ACCOUNT."
+
+2. To activate your account, verify your email address by clicking the link sent to your inbox.
+
+3. Once verified, you’ll be taken to the Infura dashboard where you can configure your auto-generated API key.
+
+4. Click on "MyFirstKey," and then there will be a "projectId" below it. Copy the project ID as you’ll need it to connect to the Sepolia testnet.
+
+5. Check the box for the desired network n the right side. In our case, check the boxes for Sepolia and Ethereum, and then save the changes.
+
+#### Step 2: Configure Truffle with Infura
+
+1. **Install Dependencies**
+
+   Open your terminal and navigate to your project directory. Install the `@truffle/hdwallet-provider` package:
+
+   ```bash
+   npm install @truffle/hdwallet-provider
+   ```
+
+2. **Update `truffle-config.js`**
+
+   Open the `truffle-config.js` file and configure it to use Infura for the Sepolia network:
+**Note**: While writing down your MetaMask seed phrase, separate the words with spaces. Do not add any punctuation like commas or periods between the words.
+
+   ```javascript
+   const HDWalletProvider = require('@truffle/hdwallet-provider')
+const infuraKey = 'YOUR_INFURA_PROJECT_ID'; // (project ID we copied from the Infura website)
+const mnemonic = 'YOUR_METAMASK_SEED_PHRASE'; // When you set up your MetaMask wallet, you'll be prompted to create a seed phrase, also known as a recovery phrase or mnemonic phrase, which is 12 or 24 words. This usually happens during the wallet creation process. MetaMask will generate a random sequence of 12 words and present them to you. You'll be asked to write down these words in the exact order they appear and keep them in a safe and secure place. This seed phrase is extremely important because it can be used to restore access to your wallet in case you forget your password or need to recover your wallet on a different device. Always ensure that you keep your seed phrase private and never share it with anyone.
+
+   module.exports = {
+     networks: {
+       development: {
+         host: "127.0.0.1",
+         port: 7545,
+         network_id: "*",
+       },
+       sepolia: {
+         provider: () => new HDWalletProvider(mnemonic, `https://sepolia.infura.io/v3/${infuraKey}`),
+         network_id: 11155111,
+         gas: 5500000,
+         confirmations: 2,
+         timeoutBlocks: 200,
+         skipDryRun: true
+       }
+     },
+     compilers: {
+       solc: {
+         version: "0.8.0",
+       },
+     },
+   };
+   ```
+
+3. **Deploy the Smart Contract**
+
+   Ensure you have Sepolia ETH in your MetaMask wallet for gas fees. Then run the deployment command:
+
+   ```bash
+   truffle migrate --network sepolia
+   ```
+**Note:** When you run the above command, there will be contract adress printed to the console. Copy that address.
+
+4. **Update Frontend with Contract Details**
+
+   After deployment, note the contract address from the deployment output. Update your `src/app.js` file with the Sepolia contract address and ABI(copy from "build/contracts/Votin.json"):
+
+   ```javascript
+   const contractAddress = 'YOUR_SEPOLIA_CONTRACT_ADDRESS'; // Replace with your actual contract address
+   const contractABI = YOUR_CONTRACT_ABI; // Replace with your contract ABI
+   ```
+
