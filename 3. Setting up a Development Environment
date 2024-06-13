@@ -10,18 +10,23 @@ To start building your voting dApp, we need to set up our development environmen
 #### Step-by-Step Setup:
 - Install Node.js and npm:
 
-Download and install Node.js from nodejs.org. This will also install npm.
-- Install Truffle:
 
+
+## Installation Guide 
+To follow along with this tutorial, you'll need to install some essential packages. Here's how to do it:
+
+### Node.js and npm:
+Download and install Node.js from [nodejs](nodejs.org). This will also install npm.
+
+#### Truffle:
 Open your terminal and run:
 ```
 npm install -g truffle
 ```
-- Install Ganache:
+#### Ganache:
+Download and install Ganache from [trufflesuite.com/ganache](https://archive.trufflesuite.com/ganache/).
 
-Download and install Ganache from trufflesuite.com/ganache.
-- Install MetaMask:
+#### MetaMask:
+Add the MetaMask extension to your browser [metamask.io](https://metamask.io/download/).
 
-Add the MetaMask extension to your browser from metamask.io.
-
-
+Now that you have the prerequisites installed, you're ready to dive into the world of Ethereum and Solidity! Let's get started with the next lesson: [Building a Smart Contract for voting]()
