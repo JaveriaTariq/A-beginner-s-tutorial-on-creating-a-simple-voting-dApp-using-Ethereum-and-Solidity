@@ -105,5 +105,5 @@ Migrate the contract to the blockchain:
 ```
 truffle migrate
 ```
-
+[👉Next Lesson: Writing a web3 application to interact with the smart contract](https://github.com/JaveriaTariq/A-beginner-s-tutorial-on-creating-a-simple-voting-dApp-using-Ethereum-and-Solidity/blob/main/5.%20Writing%20a%20Web3%20Application%20to%20Interact%20with%20the%20Smart%20Contract)
 
