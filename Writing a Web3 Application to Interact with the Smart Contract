@@ -1,0 +1,182 @@
+Let's learn how to write a Web3 application to interact with the smart contract step-by-step:
+
+### 1. Setting Up the Frontend
+
+#### Create a New Directory
+
+Create a new directory named `src` in your project root. Inside `src`, create an `index.html` file.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting DApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+    }
+    .vote-btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .vote-btn:hover {
+      background-color: #ddd;
+    }
+    #results {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Voting dApp</h1>
+  <div>
+    <button id="voteYes" class="vote-btn">Vote Yes</button>
+    <button id="voteNo" class="vote-btn">Vote No</button>
+  </div>
+  <div id="results"></div>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+```
+
+#### Create an `app.js` file
+
+In the `src` directory, create an `app.js` file.
+
+```javascript
+const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+const contractABI = YOUR_CONTRACT_ABI;
+
+async function init() {
+  try {
+    // Check for Ethereum browser provider
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
+    } else {
+      showError('No Ethereum browser detected. Please install MetaMask.');
+      return;
+    }
+
+    // Initialize contract instance
+    const votingContract = new web3.eth.Contract(contractABI, contractAddress);
+    const accounts = await web3.eth.getAccounts();
+    const account = accounts[0];
+
+    // Update UI with initial results
+    updateResults(votingContract);
+
+    // Event listeners for voting buttons
+    document.getElementById('voteYes').onclick = async () => {
+      await vote(votingContract, true, account);
+    };
+
+    document.getElementById('voteNo').onclick = async () => {
+      await vote(votingContract, false, account);
+    };
+  } catch (error) {
+    showError('Error initializing app. Please try again later.');
+    console.error('Error initializing app:', error);
+  }
+}
+
+async function vote(contract, choice, account) {
+  try {
+    await contract.methods.vote(choice).send({ from: account });
+    showAlert(`Voted ${choice ? 'Yes' : 'No'}!`, 'success');
+    updateResults(contract);
+  } catch (error) {
+    showError('Error voting. Please try again later.');
+    console.error('Error voting:', error);
+  }
+}
+
+async function updateResults(contract) {
+  try {
+    const results = await contract.methods.getResults().call();
+    document.getElementById('results').innerText = `Yes: ${results[0]}, No: ${results[1]}`;
+  } catch (error) {
+    showError('Error updating results. Please try again later.');
+    console.error('Error updating results:', error);
+  }
+}
+
+function showAlert(message, type) {
+  const alertDiv = document.createElement('div');
+  alertDiv.textContent = message;
+  alertDiv.classList.add(type);
+  document.body.appendChild(alertDiv);
+  setTimeout(() => {
+    alertDiv.remove();
+  }, 3000);
+}
+
+function showError(message) {
+  showAlert(message, 'error');
+}
+
+window.onload = init;
+```
+
+### 2. Linking the Smart Contract
+
+#### Update Contract Address and ABI
+
+Replace `YOUR_CONTRACT_ADDRESS` with the address of your deployed contract and `YOUR_CONTRACT_ABI` with the ABI of your contract. The ABI can be found in the `build/contracts/Voting.json` file after compiling.
+
+```javascript
+const contractAddress = 'YOUR_SEPOLIA_CONTRACT_ADDRESS';
+const contractABI = [
+  // Paste your contract ABI here
+];
+```
+
+### 3. Running the Application
+
+#### Install HTTP Server
+
+Use a simple HTTP server to serve your frontend files. You can use `http-server` or any other tool of your choice.
+
+Install `http-server` globally:
+
+```bash
+npm install -g http-server
+```
+
+#### Serve Your Project
+
+Navigate to your project directory and serve your `src` folder:
+
+```bash
+http-server ./src
+```
+
+#### Open Your Browser
+
+Open your browser and go to `http://localhost:8080`.
+
+### 4. Interact with the dApp
+
+#### Connect MetaMask to the Sepolia Network
+
+1. **Open MetaMask**: Click the MetaMask icon in your browser toolbar.
+2. **Select Network**: Click the network dropdown at the top and select “Sepolia Test Network”. If you don’t see it, click "Show/hide test networks" and toggle the switch to show test networks.
+
+#### Interact with the dApp
+
+- **Cast Votes**: Click the "Vote Yes" or "Vote No" buttons to cast your vote.
+- **Check Results**: The results will be updated in the `#results` div.
+
+By following these steps, you should have a fully functional voting dApp that interacts with your smart contract on the Sepolia testnet.
