@@ -13,3 +13,4 @@ Solidity is a programming language used for developing smart contracts on the Et
 - Object-Oriented: It supports features like inheritance, libraries, and user-defined types.
 - Specifically Designed: For writing smart contracts that run on the EVM.
 By learning Solidity, you'll be able to create smart contracts that automate, verify, and enforce the negotiation or performance of a contract on the Ethereum network.
+[👉Next Lesson:Setting up a development environment](https://github.com/JaveriaTariq/A-beginner-s-tutorial-on-creating-a-simple-voting-dApp-using-Ethereum-and-Solidity/blob/main/3.%20Setting%20up%20a%20Development%20Environment)
