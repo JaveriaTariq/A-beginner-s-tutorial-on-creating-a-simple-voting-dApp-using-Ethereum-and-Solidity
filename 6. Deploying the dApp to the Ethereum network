@@ -72,4 +72,4 @@ const mnemonic = 'YOUR_METAMASK_SEED_PHRASE'; // When you set up your MetaMask w
    const contractAddress = 'YOUR_SEPOLIA_CONTRACT_ADDRESS'; // Replace with your actual contract address
    const contractABI = YOUR_CONTRACT_ABI; // Replace with your contract ABI
    ```
-
+[👉Next Lesson: Testing the dApp](https://github.com/JaveriaTariq/A-beginner-s-tutorial-on-creating-a-simple-voting-dApp-using-Ethereum-and-Solidity/blob/main/7.%20Testing%20the%20dApp)
