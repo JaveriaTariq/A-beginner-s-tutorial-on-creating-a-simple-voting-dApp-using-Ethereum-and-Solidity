@@ -89,3 +89,21 @@ Migrate the contract to the blockchain:
 ```
 truffle migrate
 ```
+Create a migration script in the migrations directory. Create a new file named ```2_deploy_contracts.js```:
+```
+const Voting = artifacts.require("Voting");
+
+module.exports = function (deployer) {
+
+  const votingDuration = 60 * 60 * 24; // 24 hours in seconds
+
+  deployer.deploy(Voting, votingDuration);
+
+};
+```
+Migrate the contract to the blockchain:
+```
+truffle migrate
+```
+
+
