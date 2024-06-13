@@ -1,0 +1,38 @@
+
+
+#### Step 1: Serve the Frontend
+
+1. **Install HTTP Server**
+
+   Install a simple HTTP server globally if you haven't already:
+
+   ```bash
+   npm install -g http-server
+   ```
+
+2. **Serve Your Project**
+
+   Navigate to your project directory and serve your `src` folder:
+
+   ```bash
+   http-server ./src
+   ```
+
+#### Step 2: Interact with the dApp
+
+1. **Open Your Browser**
+
+   Open your browser and go to [http://localhost:8080](http://localhost:8080).
+
+2. **Connect MetaMask to the Sepolia Network**
+
+   - **Open MetaMask**: Click the MetaMask icon in your browser toolbar.
+   - **Select Network**: Click the network dropdown at the top and select “Sepolia Test Network”. If you don’t see it, click "Show/hide test networks" and toggle the switch to show test networks.
+
+3. **Interact with the dApp**
+
+   - **Cast Votes**: Click the "Vote Yes" or "Vote No" buttons to cast your vote.
+   - **Check Results**: The results will be updated in the `#results` div.
+
+
+
