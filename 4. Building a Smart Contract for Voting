@@ -70,6 +70,8 @@ contract Voting {
     }
 }
 ```
+In this code, we define a simple voting smart contract where users can vote "yes" or "no." It tracks the number of votes, prevents double voting, and allows the owner to end the voting process.
+
 Compiling and Migrating the Smart Contract:
 
 Compile the contract: 
