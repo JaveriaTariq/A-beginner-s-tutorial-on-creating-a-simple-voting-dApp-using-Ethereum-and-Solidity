@@ -50,6 +50,12 @@ Create a new directory named `src` in your project root. Inside `src`, create an
 </body>
 </html>
 ```
+We create a simple user interface for a voting decentralized application (dApp). It includes:
+
+- A title and buttons for users to vote "Yes" or "No."
+- Styling for the buttons and layout.
+- An empty div with the ID "results" to display the voting results.
+- It also includes references to the Web3 library (web3.min.js) for interacting with the Ethereum blockchain and an external JavaScript file (app.js) to handle the functionality of the dApp.
 
 #### Create an `app.js` file
 
@@ -129,6 +135,7 @@ function showError(message) {
 
 window.onload = init;
 ```
+In this code we initializes a web3 instance to interact with an Ethereum smart contract. It checks for the presence of an Ethereum browser provider (like MetaMask), initializes the contract instance, and sets up event listeners for voting buttons. When a user votes, it updates the contract on the blockchain and displays the results on the UI. Error handling is implemented to handle any issues that may arise during the process.
 
 ### 2. Linking the Smart Contract
 
